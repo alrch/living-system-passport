@@ -6,7 +6,7 @@ A reusable Codex skill for keeping a project-owned map of product behavior, impl
 
 If the skill confused an agent or failed on your project, [send a skill improvement](https://github.com/alrch/living-system-passport/issues/new?template=skill-improvement.yml). Reports from all projects go to [the same issue list](https://github.com/alrch/living-system-passport/issues). Describe the general problem; your application's bugs and settings stay in your application.
 
-Have a fix? Change the skill in its own checkout and send a pull request to this repository. Its Git remote is separate from your application's remote; pushing the application does not push the skill. After a fix is merged, installations update separately.
+Have a fix? Change the skill in its own checkout and send a pull request to this repository. Changes to `main` require a pull request and owner review (`@alrch`); new commits invalidate earlier approvals. The owner can merge their own maintenance pull requests, but direct pushes, force pushes and branch deletion are blocked. Its Git remote is separate from your application's remote; pushing the application does not push the skill. After a fix is merged, installations update separately.
 
 Agents: follow the [feedback workflow](references/feedback.md) for deduplication, publication authorization and a short generic reproduction. No automatic upload or extra service is required.
 
