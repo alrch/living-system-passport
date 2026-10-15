@@ -1,0 +1,38 @@
+name: Improve the passport skill
+description: Report a reusable problem in the skill or graph workflow, from any project.
+title: "[Skill] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the shared inbox for improvements to Living System Passport.
+        Write in your preferred language. Keep application bugs in their own project.
+        Describe a generic example; do not upload a project passport, private URLs or raw logs.
+  - type: input
+    id: revision
+    attributes:
+      label: Installed skill revision
+      description: Commit SHA, local edits if any, and relevant tool versions. Say unknown if unavailable.
+    validations:
+      required: true
+  - type: textarea
+    id: friction
+    attributes:
+      label: What should have happened, and what actually happened?
+      description: Explain which instruction or missing step caused the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Small generic example
+      description: Enough steps or fictional source snippets for someone outside your project to understand or reproduce it.
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Suggested general improvement and how to check it
+      description: Optional. Explain why it helps other projects; a concrete fix is not required to report a problem.
+    validations:
+      required: false
