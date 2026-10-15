@@ -2,6 +2,14 @@
 
 A reusable Codex skill for keeping a project-owned map of product behavior, implementation, requirements, and verification. The skill describes **how to investigate and maintain the map**. Each project decides where its passport lives, which sources are authoritative, and which checks it runs.
 
+## One place for improvements from every project
+
+If the skill confused an agent or failed on your project, [send a skill improvement](https://github.com/alrch/living-system-passport/issues/new?template=skill-improvement.yml). Reports from all projects go to [the same issue list](https://github.com/alrch/living-system-passport/issues). Describe the general problem; your application's bugs and settings stay in your application.
+
+Have a fix? Change the skill in its own checkout and send a pull request to this repository. Its Git remote is separate from your application's remote; pushing the application does not push the skill. After a fix is merged, installations update separately.
+
+Agents: follow the [feedback workflow](references/feedback.md) for deduplication, publication authorization and a short generic reproduction. No automatic upload or extra service is required.
+
 ## For people
 
 ### What is in this repository
@@ -10,6 +18,9 @@ A reusable Codex skill for keeping a project-owned map of product behavior, impl
 - [`references/function-entry.md`](references/function-entry.md) — a checklist for a function entry, change-impact note, and finding.
 - [`references/domain-review-checks.md`](references/domain-review-checks.md) — detailed, optional checks across forms, analytics, access, workflows, integrations, files, media, and learning.
 - [`references/project-adapter.md`](references/project-adapter.md) — the small set of facts each project must supply so the same skill can create and maintain its passport.
+- [`references/graph-workflow.md`](references/graph-workflow.md) — tool readiness, query selection, recovery and dual-tool evidence.
+- [`references/maintenance-checks.md`](references/maintenance-checks.md) — conditional checks for existing registries and review baselines.
+- [`scripts/evidence_snapshot.py`](scripts/evidence_snapshot.py) — optional file/revision snapshot for a reproducible final audit.
 - [`agents/openai.yaml`](agents/openai.yaml) — optional Codex display metadata.
 
 The passport itself, project requirements, source code, generated indexes, and project-specific scripts stay in the project repository. The shared skill includes many conditional checks; a project uses only those relevant to its behavior. This repository should not contain credentials or private project evidence.
@@ -41,7 +52,7 @@ Keep project-specific paths and commands there; apply the shared method and only
 
 Replace all placeholders before committing `AGENTS.md`; omit the revision line if the project does not pin a version. A URL in `AGENTS.md` tells people and agents where the source is; **the skill becomes discoverable after its directory is installed**. Codex normally detects new skills, but restarting the app may be needed if it does not appear.
 
-If work starts inside several independent Git repositories, a single checkout in `~/.agents/skills/living-system-passport` can make the skill available to all of them. Keep the project instructions pointing to the same source. Avoid simultaneous copies with the same skill name in user and project locations; Codex can list both instead of merging them.
+If work starts inside several independent Git repositories, a standalone user-level checkout in the skill directory supported by the installed agent can make the skill available to all of them. Clone this source repository directly there; do not symlink to a copy inside a different project. Keep the project instructions pointing to the same source. If user and project copies coexist, inspect the path actually loaded and the project's pinned revision; they are not merged. Keep intentional version pins explicit.
 
 ### Keep a team on one tested version
 
@@ -86,8 +97,8 @@ When asked to connect or update this skill:
 1. Locate the project root and read its `AGENTS.md` or existing instruction source, passport, requirement/status sources, and scenario or test documentation. Do not assume any particular file layout or tooling. Fill the facts in the [project-adapter checklist](references/project-adapter.md) from these sources.
 2. Check whether `.agents/skills/living-system-passport` already exists. If it is this repository, inspect local changes and the project's tested revision before any requested update; use the pinned-revision commands above or `git pull --ff-only` for a project following latest. If the path contains something else, stop and report the conflict rather than overwriting it.
 3. If absent, clone the source URL above into that path and check out the project's tested revision, if recorded. Ensure the nested checkout is ignored by the project Git repository; preserve unrelated `.gitignore` entries. Do not commit the downloaded checkout as project content.
-4. Add or update the project's existing instruction source with the source URL and actual project sources, checks, and adapter path. If `AGENTS.md` is only a pointer to another maintained profile, update that profile according to its rules instead of creating a competing set of instructions. Keep project-specific commands, IDs, and assumptions in that project.
-5. Validate that `SKILL.md` and its linked references are present and that `HEAD` matches the project's tested revision, if pinned. Restart Codex if skill discovery has not refreshed. In a small real project task, check that the skill uses the project's own sources and produces confirmed versus uncertain links correctly.
+4. Add or update the project's existing instruction source with the source URL and actual project sources, checks, and adapter path. Keep the adapter and operational graph rules directly in the owning project's instructions; do not route setup through another project or private configuration workspace. Preserve existing project rules when replacing a bootstrap pointer. Keep project-specific commands, IDs, and assumptions in that project.
+5. Prove graph readiness with the [graph workflow](references/graph-workflow.md) when graphs are in scope: installed is not indexed or queryable. Validate that `SKILL.md` and its linked references are present and that `HEAD` matches the project's tested revision, if pinned. Restart Codex if skill discovery has not refreshed. In a small real project task, check that the skill uses the project's own sources and produces confirmed versus uncertain links correctly.
 6. Report the installed commit, changed project files, validation performed, and anything the project owner still needs to define. Do not claim the project's passport is complete merely because the skill is installed.
 
 The skill does not authorize changing product behavior, requirement status, releases, or external systems. Follow the project's normal authorization and review process for those actions.

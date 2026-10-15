@@ -6,14 +6,17 @@ The shared skill defines decisions and evidence standards. The owning project su
 
 | Question | Project-owned answer |
 | --- | --- |
-| What is the passport? | Canonical file or linked pages; stable ID convention; finding register location |
+| What is the passport? | Canonical file or linked pages; stable ID convention; separate product and method finding locations |
 | Who owns each fact? | Product rules, requirement wording and status, code, API contracts, data, tests, releases, external evidence |
 | Where are selection and lifecycle rules? | Identity keys across sources, visibility and retention policy, cleanup mechanism, if the project has filterable records or exports |
 | What is the repository boundary? | Code repositories and revision identifiers needed to describe one current behavior |
 | What triggers review? | Product changes, requirement/status changes, source pulls, screen or API moves, new files, accepted decisions |
+| Which graph serves which purpose? | Code dependencies versus outcome/rule/scenario citations; engines, actual index identities, build/status/query commands, exclusions and readiness evidence |
 | How are affected entries found? | Existing index, graph, changed-file or requirement-ID lookup, or targeted search |
 | Which steps are generated? | Inventories and indexes; the build commands and whether regeneration is safe on a mixed working tree |
 | How is review accepted? | Structural and scenario checks; source fingerprint or revision baseline procedure, if one exists |
+| How is the skill installed? | Actual source repository, installed path and revision; no dependency on another project checkout or private profile |
+| Where does reusable feedback go? | Shared skill Issues/PRs; local method finding links back to its submitted URL; submission authorization and actual access remain explicit |
 | What must be reported? | Checked scope, evidence, unresolved drift, separate test/CI/deployment results |
 
 Record only commands that exist and the conditions under which they should run. If there is no scenario catalog, graph, fingerprint baseline, or generated view, the shared skill still works from source search and explicit evidence.
@@ -28,3 +31,22 @@ Record only commands that exist and the conditions under which they should run. 
 6. Report unrelated drift separately. Do not silently absorb it into the task or imply that the whole passport was reviewed.
 
 This contract applies to creation and editing. On first creation, the baseline records where review starts; it does not prove semantic completeness. On later edits, preserve the previous reviewed boundary until each affected item is checked.
+
+
+## Graph integration and direct project rules
+
+Read [graph-workflow.md](graph-workflow.md) when adding Graphify or Codebase Memory. Put the operational rules below directly in the project's existing agent instructions, adapted to real installed commands and paths. A reference to another project's instructions is not an adapter. Do not invent a service layout, add a daemon, require both tools on every edit or install a tool solely to fill a template.
+
+```markdown
+### Passport and graph maintenance
+
+- The passport describes behavior; code graphs navigate dependencies and traceability graphs preserve explicit outcome/rule/source/scenario links. A citation is not implementation or acceptance.
+- For behavior changes, check the affected repository index and trace the implementation, direct consumers, dependencies and relevant tests before editing. Use bounded queries and verify consequential links against current source. Known text-only edits can use direct search.
+- Use Codebase Memory for exact code impact and Graphify for architecture/document relationships when available and appropriate. Do not duplicate ordinary queries; exercise both when a dual-tool audit is requested.
+- Name the repository/index explicitly. Check status, source freshness, exclusions and partial parsing; separately discover new unlinked files. Retain confidence, truncation and test-inclusion limits. A test relationship is not a passing test.
+- Missing or stale tooling requires a concrete diagnosis and scoped source fallback; do not silently mark a requested dual-tool check complete. Do not restart or delete another session's runtime to repair a local index.
+- Update the authored passport and links with an accepted behavior change, refresh affected generated views, and accept reviewed baselines separately. Record revisions/document hashes for final audit evidence; invalidate affected evidence if its inputs change.
+- Keep product findings and skill/tool/method findings separate in the project's existing documentation. Findings do not authorize unrelated implementation or publication.
+```
+
+Alongside these rules, record actual local commands and locations from the table above. Keep executable project adapters parameterized by local repositories and IDs; the shared skill must not import a previous project's route parser, source catalog, shell environment or infrastructure assumptions.
