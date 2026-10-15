@@ -54,6 +54,17 @@ git -C .agents/skills/living-system-passport checkout <new-tested-commit>
 
 Check the active revision with `git -C .agents/skills/living-system-passport rev-parse HEAD`. The project instruction is the team's version choice; the source repository's `main` may be newer.
 
+### See whether a newer version is available
+
+From the project root, fetch the shared repository and list commits added since the installed revision:
+
+```bash
+git -C .agents/skills/living-system-passport fetch origin main
+git -C .agents/skills/living-system-passport log --oneline HEAD..origin/main
+```
+
+An empty list means there is no newer commit on `main`. This check does not change the version Codex uses. Review the listed changes, run the two small comparison cases below, then update the tested commit in the project's instructions and check it out locally. Each teammate repeats the checkout; a URL in `AGENTS.md` does not watch the repository or update a skill automatically.
+
 ### Update a project that follows latest
 
 From the project root:
