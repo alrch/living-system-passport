@@ -1,0 +1,4 @@
+interface:
+  display_name: "Living System Passport"
+  short_description: "Maintain a readable system map and change impact"
+  default_prompt: "Use $living-system-passport to map this feature's behavior, implementation, dependencies, and scenario checks."

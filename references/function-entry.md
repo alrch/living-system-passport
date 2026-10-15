@@ -1,36 +1,40 @@
 # Function entry and change-impact note
 
-Use this as a checklist, not a mandatory document layout. Omit inapplicable fields with a reason; never fill gaps with guesses.
+Use this as a checklist, not a fixed document layout. Omit inapplicable fields with a reason; do not fill gaps with guesses.
+
+## Function entry
 
 | Field | Record |
 | --- | --- |
-| Stable ID and name | Existing function ID, or a distinct passport ID |
-| Scope and state | Included behavior; planned, observed, accepted, or externally gated, with status source |
-| Meaning for people | Purpose, actors, outcome, and the rule a future solution must preserve |
-| Exceptions | Negative cases, failures, manual or external duties, open decisions |
-| Interface | Screens or entry points, roles, visible controls, fields, and states |
-| Services and API | Method or event, request and response, errors, authorization, implementation source |
-| Data | Models, fields, relationships, indexes, lifecycle, and unverified physical names |
-| Field path | For consequential values: input and default → validation → transformation → storage → read or export |
-| Transition path | Precondition, ordered writes and side effects, failure point, retry, observable result |
-| Connections | Upstream triggers, direct consumers, neighboring functions, shared contracts |
-| Traceability | Requirement or ticket IDs, scenarios, test result and date, evidence, source revision |
-| Findings | Linked contradictions, duplicate candidates, unused-code candidates, missing connections |
+| Stable function ID and name | Existing ID if available; otherwise a passport ID |
+| Scope and state | What behavior is included; observed, planned, accepted, or externally gated, with status source |
+| Meaning for people | Why this exists, who acts, what they receive, and the rule a future solution must preserve |
+| Exceptions and boundaries | Negative cases, failures, manual/external duties, decisions still open |
+| Screens | Routes, roles, fields, table columns, controls, visible states |
+| API and services | Method/path, request/response/errors, authorization, implementation source |
+| Data | Model or collection, fields, relationships, indexes, lifecycle; mark unverified physical names |
+| Field path | For consequential fields: UI input/default → client payload → API validation → service value → stored field → read/export; note any value lost or changed |
+| Transition path | Actor, precondition, ordered state writes and side effects, failure point, retry/idempotency, observable result |
+| Connections | Upstream triggers, downstream consumers, neighboring functions, shared contracts |
+| Traceability | Requirement/ticket IDs, scenario IDs, demo contract state, test execution/result/date, evidence and source revision; keep acceptance status separate from scenario metadata |
+| Findings | Linked contradiction, repeated behavior, duplicate implementation/data, dead code candidate, or missing connection; status and evidence |
 
-Write the human meaning as prose a nontechnical colleague can read. Technical identifiers support that explanation; they do not replace it.
+Write the human meaning as prose that a nontechnical colleague can read. Technical identifiers belong in the reference rows, not as substitutes for that prose.
 
 ## Change-impact note
 
-State the proposed observable change and the rule to preserve or change. Then record:
+**Proposed change:** observable behavior and reason.
 
-| Class | Affected item | Evidence | Action or question |
+**Meaning-level rule:** what must remain true, what is being changed, and any unresolved decision.
+
+| Classification | Affected item | Evidence | Action or question |
 | --- | --- | --- | --- |
-| Confirmed change | Rule, screen, API, data, or scenario | Current source or accepted decision | Concrete edit and targeted check |
-| Inspect | Possible consumer or neighbor | Graph lead, search result, or shared contract | Exact relationship to verify |
-| Gap | Missing link, evidence, test, or owner | What was checked | Next check or decision |
+| Confirmed change | Screen/API/data/rule/scenario | Current source or accepted decision | Concrete edit and targeted check |
+| Inspect | Possible consumer or neighboring workflow | Graph lead, search result, or shared contract | Verify the exact relationship |
+| Gap | Missing link, evidence, test, or owner | What was checked | Record the missing fact or decision |
 
-Finish with the smallest useful scenario set and the passport entries to update. Separate proposed checks from checks actually run and passed.
+Finish with the smallest useful scenario set and a list of passport entries to update. Separate a proposed test from a test actually run and passed.
 
 ## Finding note
 
-Use one note per concrete issue, linked from affected entries. Record its ID, class, status (confirmed, candidate, intentional, or resolved), affected actor or component, evidence on both sides, consequence, owner or next check, and review date. A dead-code or duplicate candidate does not authorize deletion or consolidation.
+Use one note per concrete issue, linked from all affected entries. Record: finding ID; class (behavioral contradiction, repeated function, duplicate implementation/data, dead code candidate, missing connection); status (confirmed, candidate, intentional, resolved); affected actor/state/action or code/data owners; evidence on each side; observed consequence; decision owner or targeted next check; and review date. A dead code or duplication candidate does not authorize deletion or consolidation.
