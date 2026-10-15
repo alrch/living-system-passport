@@ -35,6 +35,14 @@ Start from an exact ID, symbol, file or entry point; inspect bounded incoming co
 
 Keep project identities, commands, graph outputs and runtime settings in the project adapter. A missing tool does not silently reduce requested coverage: diagnose it within scope, use source search for independent work, and report the exact remaining limitation. Do not call an explicit dual-tool audit complete until both were exercised or the limitation was clearly handed back.
 
+## Verify behavior beyond the map
+
+Creating or auditing a passport requires a behavior-verification pass after navigation. Select consequential rules in the requested scope and read the [behavior verification checks](references/behavior-verification.md). Find the actual writers of the same logical data or transition, compare their validation, authority, dependent-state updates and side effects, and follow the result into storage or a real consumer. A setting must reach an enforcing branch; a saved value or permission helper alone does not establish its effect.
+
+For the selected rules, exercise the relevant negative, cross-path, failure or retry scenarios when safe execution is available and authorized. Include an allowed control and inspect readback and side effects, including absence of writes on rejection. Reuse useful tests or make a small isolated probe; do not stop at a suggested test list or a green unrelated suite. Plans need proposed checks only; text-only edits do not trigger a behavioral audit. If execution is unavailable, continue source review and identify the exact unexercised boundary without inventing results or changing product code merely to make the audit complete.
+
+Track mapping, source review and executed checks separately in existing entries/evidence. For a broad passport, apply this pass by domain and keep remaining checks visible; a successful graph lookup does not complete a behavioral review. Record writer paths, expected versus observed behavior, readback and execution limits. Detailed examples in the domain reference are conditional; the decision to verify consequential behavior is not optional.
+
 ## Work in domain batches
 
 When building a broad passport, take one connected domain at a time. Start with a few consequential actor journeys and trace each through its actual entry point, rule, state, external boundary and observable result. Include screens and APIs where present; omit nonexistent layers in a library, CLI, batch or document workflow. Prioritize accepted behavior, access or data loss boundaries, and changes that affect several neighboring functions. Keep planned details in the map without requiring every planned field to receive the same depth immediately.
@@ -51,7 +59,7 @@ After the owner selects an outcome, implement the connected finding within the a
 
 If the owner explicitly defers a product choice, record the event that will reopen it (for example, a release cutoff), preserve current behavior, and continue independent work. Do not present the same deferred choice as a blocker or ask it again on every domain pass.
 
-Finish the batch when the important journeys and accepted rules have a traceable observable outcome, consequential rights and fields have been checked through their direct dependencies, and remaining uncertainty is explicitly recorded. Report what was checked and what remains open; avoid a single completeness percentage for the whole platform. Use the first batch to calibrate the depth and review cost of later batches.
+Finish the batch when the important journeys and accepted rules have a traceable observable outcome, consequential rights and fields have been checked through their direct dependencies and relevant writer paths, and the selected behavioral checks have observed results or specific execution limitations. A map with only planned scenarios is not a behaviorally verified batch. Report what was checked and what remains open; avoid a single completeness percentage for the whole platform. Use the first batch to calibrate the depth and review cost of later batches.
 
 For an owner-authorized autonomous pass, keep working through independent findings after each local fix and verification. A progress report is not a completion event. Stop the pass only at its agreed time or scope boundary, when no independent work remains, or when the next action genuinely requires the owner's decision or external evidence. Name the unfinished findings and the exact next step when handing the pass back; never imply the whole passport is complete because one batch passed.
 

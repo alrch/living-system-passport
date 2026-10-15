@@ -18,6 +18,7 @@ Agents: follow the [feedback workflow](references/feedback.md) for deduplication
 - [`references/function-entry.md`](references/function-entry.md) — a checklist for a function entry, change-impact note, and finding.
 - [`references/domain-review-checks.md`](references/domain-review-checks.md) — detailed, optional checks across forms, analytics, access, workflows, integrations, files, media, and learning.
 - [`references/project-adapter.md`](references/project-adapter.md) — the small set of facts each project must supply so the same skill can create and maintain its passport.
+- [`references/behavior-verification.md`](references/behavior-verification.md) — negative scenarios, alternate writers, readback and honest verification boundaries.
 - [`references/graph-workflow.md`](references/graph-workflow.md) — tool readiness, query selection, recovery and dual-tool evidence.
 - [`references/maintenance-checks.md`](references/maintenance-checks.md) — conditional checks for existing registries and review baselines.
 - [`scripts/evidence_snapshot.py`](scripts/evidence_snapshot.py) — optional file/revision snapshot for a reproducible final audit.

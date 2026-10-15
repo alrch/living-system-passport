@@ -14,7 +14,8 @@ The shared skill defines decisions and evidence standards. The owning project su
 | Which graph serves which purpose? | Code dependencies versus outcome/rule/scenario citations; engines, actual index identities, build/status/query commands, exclusions and readiness evidence |
 | How are affected entries found? | Existing index, graph, changed-file or requirement-ID lookup, or targeted search |
 | Which steps are generated? | Inventories and indexes; the build commands and whether regeneration is safe on a mixed working tree |
-| How is review accepted? | Structural and scenario checks; source fingerprint or revision baseline procedure, if one exists |
+| How is behavior exercised safely? | Existing test/probe commands, disposable data or supported isolated target, callable boundaries and readback paths; identify external effects that remain unverified |
+| How is review accepted? | Structural and behavioral/scenario evidence, writer-path comparison and explicit execution limits; source fingerprint or revision baseline procedure, if one exists |
 | How is the skill installed? | Actual source repository, installed path and revision; no dependency on another project checkout or private profile |
 | Where does reusable feedback go? | Shared skill Issues/PRs; local method finding links back to its submitted URL; submission authorization and actual access remain explicit |
 | What must be reported? | Checked scope, evidence, unresolved drift, separate test/CI/deployment results |
