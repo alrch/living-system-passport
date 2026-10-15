@@ -58,6 +58,8 @@ For an owner-authorized autonomous pass, keep working through independent findin
 1. **Meaning for people:** purpose, actors, observable result, business rules that must survive changes, exceptions, responsibility outside the system, and unresolved decisions. Use ordinary language. Explain why a rule matters when that changes implementation decisions.
 2. **Technical realization:** entry points and screens, visible controls and fields, API methods and contracts, services, stored data and indexes, integrations, permissions, state transitions, and failure behavior. Link precise sources rather than pasting entire code or specifications.
 
+When an optional recommendation or filtered result appears beside a regular list, trace the condition for each request and the visible fallback when the optional result is empty or fails. Do not describe an absent recommendation as an empty catalog unless the regular list is also empty.
+
 Connect both levels to the relevant requirements, their current statuses, evidence, and scenario tests. Label each link as confirmed or a candidate needing verification. A function may serve several requirements, and a requirement may cross several functions. Keep external or manual obligations visible without portraying them as implemented software.
 
 Use [the function-entry template](references/function-entry.md) when creating a new entry or comparing an existing one for missing information. Follow an established project format if it already provides the same information.
