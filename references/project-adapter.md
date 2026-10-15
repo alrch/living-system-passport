@@ -8,6 +8,7 @@ The shared skill defines decisions and evidence standards. The owning project su
 | --- | --- |
 | What is the passport? | Canonical file or linked pages; stable ID convention; finding register location |
 | Who owns each fact? | Product rules, requirement wording and status, code, API contracts, data, tests, releases, external evidence |
+| Where are selection and lifecycle rules? | Identity keys across sources, visibility and retention policy, cleanup mechanism, if the project has filterable records or exports |
 | What is the repository boundary? | Code repositories and revision identifiers needed to describe one current behavior |
 | What triggers review? | Product changes, requirement/status changes, source pulls, screen or API moves, new files, accepted decisions |
 | How are affected entries found? | Existing index, graph, changed-file or requirement-ID lookup, or targeted search |

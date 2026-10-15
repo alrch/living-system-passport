@@ -13,6 +13,7 @@ Use this as a checklist, not a fixed document layout. Omit inapplicable fields w
 | Screens | Routes, roles, fields, table columns, controls, visible states |
 | API and services | Method/path, request/response/errors, authorization, implementation source |
 | Data | Model or collection, fields, relationships, indexes, lifecycle; mark unverified physical names |
+| Selection and completeness, when relevant | Applied filters and identity keys across sources; row limit, sorting, retention versus deletion, and whether UI and direct export reveal truncation |
 | Field path | For consequential fields: UI input/default → client payload → API validation → service value → stored field → read/export; note any value lost or changed |
 | Transition path | Actor, precondition, ordered state writes and side effects, failure point, retry/idempotency, observable result |
 | Connections | Upstream triggers, downstream consumers, neighboring functions, shared contracts |
