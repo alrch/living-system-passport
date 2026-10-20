@@ -6,7 +6,7 @@ The shared skill defines decisions and evidence standards. The owning project su
 
 | Question | Project-owned answer |
 | --- | --- |
-| What is the passport? | Canonical file or linked pages; stable ID convention; separate product and method finding locations |
+| What is the passport? | Current functional description and stable IDs; findings under functions or cross-cutting findings at the end; canonical journal, task history and evidence locations kept separate |
 | Who owns each fact? | Product rules, requirement wording and status, code, API contracts, data, tests, releases, external evidence |
 | Where are selection and lifecycle rules? | Identity keys across sources, visibility and retention policy, cleanup mechanism, if the project has filterable records or exports |
 | What is the repository boundary? | Code repositories and revision identifiers needed to describe one current behavior |
@@ -51,3 +51,7 @@ Read [graph-workflow.md](graph-workflow.md) when adding Graphify or Codebase Mem
 ```
 
 Alongside these rules, record actual local commands and locations from the table above. Keep executable project adapters parameterized by local repositories and IDs; the shared skill must not import a previous project's route parser, source catalog, shell environment or infrastructure assumptions.
+
+## Editorial and publication boundary
+
+The adapter must preserve the distinction between current functional description, change journal and execution evidence. Do not add mandatory dated passport entries or republishing to every code fix/release. Review the affected entry and record a no-change conclusion in the task record when the documented contract remains correct. Put hosting/version-binding mechanics in operational metadata; publishing remains a separately authorized workflow.
