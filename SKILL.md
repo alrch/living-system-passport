@@ -1,6 +1,6 @@
 ---
 name: living-system-passport
-description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a whole project, audit an existing function, plan a new function, or assess a behavior change; connect findings to project quality checks without making the passport a tool configuration.
+description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a project, audit a function, plan a feature, assess a behavior change, and before agent-run commits or pushes in projects maintaining a passport and product guide. Maintain the linked PM guide and check graph tool availability, requesting installation of missing recommended tools.
 ---
 
 # Living System Passport
@@ -10,6 +10,21 @@ A passport helps people and agents understand what a system does and what a prop
 The workflow is portable. Discover the project's own sources of truth, repositories, status language, scenario format, indexes, and checks before applying it. The detailed domain checks are optional: select only those matching the behavior under review. No particular architecture, infrastructure, registry, or business domain is required. Verify the actual skill path and revision when user and project installations share this name; do not inherit another project's adapter through a symlink or profile.
 
 Read the project's instructions for its [passport adapter](references/project-adapter.md): where the passport and source evidence live, which changes trigger review, how linked entries are found, and which project commands validate or refresh them. If no adapter exists yet, establish the minimum facts needed for the requested task instead of inventing commands or copying another project's configuration. Project instructions can make this skill mandatory for particular changes without duplicating its full method.
+
+## Keep the passport separate from the change journal
+
+The passport describes the system's current functions, behavior, rules, boundaries and interactions. It is not a changelog, release report, audit diary or task plan.
+
+- Start with the system's purpose, scope, navigation and functions. Do not prepend dated updates, test summaries, deployment history, "what changed", "what to change next", or a findings dashboard.
+- Update a changed rule in its existing function entry. Record the resulting behavior, not the sequence of fixes or implementation attempts. A bug fix that restores the documented contract may require no passport prose change.
+- Keep change history, decisions and attempts in the project's journal/task history. Keep test runs, screenshots, logs and release details in their existing evidence/operational records. Link to those sources without duplicating their chronology in the passport.
+- Put a finding under the affected function, with its current status, consequence and source link. Put genuinely cross-cutting findings in a general findings section at the end. A separate canonical register may retain the details; do not copy its issue history into each entry.
+- A function may link to its requirement, scenario and verification evidence and briefly state a material uncertainty. Keep run-by-run results, timestamps, build hashes and deployment receipts outside the narrative; optional version metadata belongs in a separate manifest or compact metadata view.
+- Reviewing passport freshness, changing its prose and publishing its reading view are separate actions. Do not require a new entry or publication after every fix or deployment. Publish only within an already authorized documentation workflow or an explicit publication request; do not make optional publication a blocker for the user's implementation task.
+
+## Maintain a technical passport and product guide
+
+Maintain the product guide alongside the technical passport; it replaces the former product passport/editorial summary. Read [product-guide.md](references/product-guide.md) when creating either document, replacing the product view, or reviewing affected behavior. Use the five-part guide, one continuous example, explicit function dependencies and a worked proposed addition. Review affected guide chapters whenever the passport is reviewed, including existing commit/push and environment-specific release boundaries. Record a justified no-change result when appropriate. Keep actual automation, review evidence and publication authorization distinct; a skill instruction is not an installed hook or proof of deployed behavior.
 
 ## Establish the boundary
 
@@ -26,6 +41,8 @@ Before naming a new entry, search the project's existing passport and index for 
 Before calling the first domain complete, sample traceability in both directions: requirement or user outcome → function → implementation and changed source file → function → scenario. State separately what is structurally linked, described from current sources, checked across layers, and exercised by a scenario. A discovered route or a passing structural check proves only its own layer.
 
 ## Use the project graphs
+
+On first use in a project and before an agent-run commit or push, check availability of the recommended Graphify and Codebase Memory tools through the project's configured CLI/MCP integration. Reuse a confirmed check within the same session unless the environment changes. If either is absent, show the installation request in the user's language before proceeding; name only the missing tools. Follow [graph workflow](references/graph-workflow.md#missing-recommended-tools) for the message and installation sources. Do not silently skip this notice or treat an installed but failing tool as absent.
 
 Separate graph purposes from tool names: a code graph navigates implementations and dependencies; a traceability graph connects outcomes, rules, functions, sources and scenarios. Graphify and Codebase Memory can overlap on code navigation; neither automatically proves requirement acceptance. Explicit citations must retain citation semantics.
 
@@ -55,7 +72,7 @@ For a numerical or time-window rule, read the primary source before reducing the
 
 If a rule compares periods only while a condition remains unchanged, identify the observable fields that define that condition and whether their historical values are retained before offering an implementation choice. When the source does not define the condition, include its proposed meaning in the same decision packet; a choice of strict comparison alone does not define what must be compared.
 
-After the owner selects an outcome, implement the connected finding within the authorized implementation scope before opening another owner question. In an audit-only task, record the accepted correction and its implementation follow-up without changing product code. Resolve ordinary algorithm and data-handling details from the accepted rule and the safest compatible defaults; record those defaults in the passport. Do not split one finding into a chain of microdecisions merely because several implementation cases exist. Reopen the owner question only if source review reveals a materially different product outcome.
+After the owner selects an outcome, implement the connected finding within the authorized implementation scope before opening another owner question. In an audit-only task, record the accepted correction and its implementation follow-up without changing product code. Resolve ordinary algorithm and data-handling details from the accepted rule and the safest compatible defaults; record behaviorally significant defaults in the affected function entry; keep implementation history in the journal. Do not split one finding into a chain of microdecisions merely because several implementation cases exist. Reopen the owner question only if source review reveals a materially different product outcome.
 
 If the owner explicitly defers a product choice, record the event that will reopen it (for example, a release cutoff), preserve current behavior, and continue independent work. Do not present the same deferred choice as a blocker or ask it again on every domain pass.
 
@@ -83,7 +100,7 @@ For a new function or change in logic:
 3. Trace the smallest relevant chain in both directions: user action or external event → actual entry point → implementation → state/integration, using only layers the project has; then find direct consumers, shared contracts, nearby functions, and scenario tests. Use existing indexes first, followed by targeted source checks.
 4. Return an impact list with **confirmed changes**, **places to inspect**, and **missing/uncertain links**. Give evidence for each. Do not turn a possible dependency into a proven breakage.
 5. Choose scenario checks for the changed rule and its direct dependencies: normal path, access boundary, failure or retry, and relevant edge state. Reuse existing scenarios before adding new ones. Run only the checks warranted by the actual change and project gates.
-6. Update the passport in the same task as the accepted behavior change. If the answer is not yet decided, record the open question and owner of the decision rather than inventing a rule. Record why a reviewed neighboring entry needs no edit when that matters for traceability.
+6. Review the affected passport entry in the same task. Update its current description only if the accepted behavior or its links changed; a restored documented contract may need no prose change. If the answer is not yet decided, record the open question and owner of the decision rather than inventing a rule. Record why a reviewed neighboring entry needs no edit when that matters for traceability.
 
 For a request to plan rather than implement, produce the impact list and proposed passport changes without claiming that code, tests, requirements, or acceptance statuses were updated.
 
@@ -110,7 +127,7 @@ For a release, use the same check at successive boundaries: run the relevant com
 
 - Keep generated inventories separate from authored meaning and reviewed baselines. Structural links, source review, cross-layer checks and scenario execution are different coverage layers; report them separately.
 - Start from the task's changed files, rules and statuses, including new unlinked files. Compare current sources with the reviewed boundary; a timestamp or a hash of cited files alone cannot detect every new entry point.
-- Record source revisions and relevant working-tree changes for each repository. Refresh indexes from current inputs without accepting unreviewed behavior or unrelated drift.
+- Record source revisions and relevant working-tree changes for each repository in the evidence record or metadata, not as a passport change narrative. Refresh indexes from current inputs without accepting unreviewed behavior or unrelated drift.
 - Review human prose as well as generated status rows. Resolve superseded sources before creating an owner question; preserve historical evidence with its date and scope.
 - Bind final audit evidence to the passport text and inspected sources. Freeze them during the final pass or compare before/after hashes; if they change, mark the result stale and recheck the affected scope. An initial fingerprint records a boundary, not semantic approval.
 - For the project's actual registry, roles, screen moves, external handoffs or generated views, read the relevant [maintenance checks](references/maintenance-checks.md). Do not load every conditional check for an unrelated task.

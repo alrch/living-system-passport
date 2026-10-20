@@ -4,6 +4,8 @@ Use this as a checklist, not a fixed document layout. Omit inapplicable fields w
 
 ## Function entry
 
+Describe current behavior. Keep findings under this function; use an end-of-passport section only for cross-cutting findings. The passport begins with purpose and navigation, not a review or change summary. Change-impact notes belong to the task record, and test-run/deployment history belongs to evidence or the journal.
+
 | Field | Record |
 | --- | --- |
 | Stable function ID and name | Existing ID if available; otherwise a passport ID |
@@ -16,10 +18,10 @@ Use this as a checklist, not a fixed document layout. Omit inapplicable fields w
 | Selection and completeness, when relevant | Applied filters and identity keys across sources; row limit, sorting, retention versus deletion, and whether UI and direct export reveal truncation |
 | Field path | For consequential fields: UI input/default → client payload → API validation → service value → stored field → read/export; note any value lost or changed |
 | Alternate write paths | Other entry points writing the same consequential field/state; compare policy, validation, dependent-state updates and intentional exceptions |
-| Behavioral evidence | Selected rule/source, allowed control and relevant negative/cross-path/failure/retry check, expected versus observed readback/side effects; executed versus source-reviewed/proposed/blocked, with mock and environment limits |
+| Behavioral evidence | Links to the canonical scenario/evidence records and a concise material verification limit; keep individual run results, readback logs and mock/environment details in those records |
 | Transition path | Actor, precondition, ordered state writes and side effects, failure point, retry/idempotency, observable result |
 | Connections | Upstream triggers, downstream consumers, neighboring functions, shared contracts |
-| Traceability | Requirement/ticket IDs, scenario IDs, demo contract state, test execution/result/date, evidence and source revision; keep acceptance status separate from scenario metadata |
+| Traceability | Requirement/ticket IDs, scenario IDs and links to evidence; keep acceptance separate from scenario metadata and store execution dates/results/revisions in the evidence record |
 | Findings | Linked contradiction, repeated behavior, duplicate implementation/data, dead code candidate, or missing connection; status and evidence |
 
 Write the human meaning as prose that a nontechnical colleague can read. Technical identifiers belong in the reference rows, not as substitutes for that prose.

@@ -6,11 +6,12 @@ The shared skill defines decisions and evidence standards. The owning project su
 
 | Question | Project-owned answer |
 | --- | --- |
-| What is the passport? | Canonical file or linked pages; stable ID convention; separate product and method finding locations |
+| What is the passport? | Current functional description and stable IDs; findings under functions or cross-cutting findings at the end; canonical journal, task history and evidence locations kept separate |
 | Who owns each fact? | Product rules, requirement wording and status, code, API contracts, data, tests, releases, external evidence |
 | Where are selection and lifecycle rules? | Identity keys across sources, visibility and retention policy, cleanup mechanism, if the project has filterable records or exports |
 | What is the repository boundary? | Code repositories and revision identifiers needed to describe one current behavior |
 | What triggers review? | Product changes, requirement/status changes, source pulls, screen or API moves, new files, accepted decisions |
+| What invokes lifecycle checks? | Agent instructions invoking this skill before agent-run commit/push; actual installed hooks/CI, if any, for manual Git actions. Record missing automation explicitly. |
 | Which graph serves which purpose? | Code dependencies versus outcome/rule/scenario citations; engines, actual index identities, build/status/query commands, exclusions and readiness evidence |
 | How are affected entries found? | Existing index, graph, changed-file or requirement-ID lookup, or targeted search |
 | Which steps are generated? | Inventories and indexes; the build commands and whether regeneration is safe on a mixed working tree |
@@ -51,3 +52,11 @@ Read [graph-workflow.md](graph-workflow.md) when adding Graphify or Codebase Mem
 ```
 
 Alongside these rules, record actual local commands and locations from the table above. Keep executable project adapters parameterized by local repositories and IDs; the shared skill must not import a previous project's route parser, source catalog, shell environment or infrastructure assumptions.
+
+## Editorial and publication boundary
+
+The adapter must preserve the distinction between current functional description, change journal and execution evidence. Do not add mandatory dated passport entries or republishing to every code fix/release. Review the affected entry and record a no-change conclusion in the task record when the documented contract remains correct. Put hosting/version-binding mechanics in operational metadata; publishing remains a separately authorized workflow.
+
+## Product guide binding
+
+Record the canonical product-guide path, its chapter links to passport function IDs, the old product-view replacement/redirect, actual commit/push review rules and deployed-environment/version bindings. Follow [product-guide.md](product-guide.md) for content and joint review. Update active navigation, reading-view source allowlists and manifests to the guide; do not create a third current product summary. State whether each lifecycle check is agent-run or actually enforced by hooks/CI.
