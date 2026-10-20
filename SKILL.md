@@ -1,6 +1,6 @@
 ---
 name: living-system-passport
-description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a whole project, audit an existing function, plan a new function, or assess a behavior change; connect findings to project quality checks without making the passport a tool configuration. Create and maintain its linked product guide for PMs, including function interactions and joint lifecycle review.
+description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a project, audit a function, plan a feature, assess a behavior change, and before agent-run commits or pushes in projects maintaining a passport and product guide. Maintain the linked PM guide and check graph tool availability, requesting installation of missing recommended tools.
 ---
 
 # Living System Passport
@@ -41,6 +41,8 @@ Before naming a new entry, search the project's existing passport and index for 
 Before calling the first domain complete, sample traceability in both directions: requirement or user outcome → function → implementation and changed source file → function → scenario. State separately what is structurally linked, described from current sources, checked across layers, and exercised by a scenario. A discovered route or a passing structural check proves only its own layer.
 
 ## Use the project graphs
+
+On first use in a project and before an agent-run commit or push, check availability of the recommended Graphify and Codebase Memory tools through the project's configured CLI/MCP integration. Reuse a confirmed check within the same session unless the environment changes. If either is absent, show the installation request in the user's language before proceeding; name only the missing tools. Follow [graph workflow](references/graph-workflow.md#missing-recommended-tools) for the message and installation sources. Do not silently skip this notice or treat an installed but failing tool as absent.
 
 Separate graph purposes from tool names: a code graph navigates implementations and dependencies; a traceability graph connects outcomes, rules, functions, sources and scenarios. Graphify and Codebase Memory can overlap on code navigation; neither automatically proves requirement acceptance. Explicit citations must retain citation semantics.
 

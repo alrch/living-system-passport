@@ -11,6 +11,7 @@ The shared skill defines decisions and evidence standards. The owning project su
 | Where are selection and lifecycle rules? | Identity keys across sources, visibility and retention policy, cleanup mechanism, if the project has filterable records or exports |
 | What is the repository boundary? | Code repositories and revision identifiers needed to describe one current behavior |
 | What triggers review? | Product changes, requirement/status changes, source pulls, screen or API moves, new files, accepted decisions |
+| What invokes lifecycle checks? | Agent instructions invoking this skill before agent-run commit/push; actual installed hooks/CI, if any, for manual Git actions. Record missing automation explicitly. |
 | Which graph serves which purpose? | Code dependencies versus outcome/rule/scenario citations; engines, actual index identities, build/status/query commands, exclusions and readiness evidence |
 | How are affected entries found? | Existing index, graph, changed-file or requirement-ID lookup, or targeted search |
 | Which steps are generated? | Inventories and indexes; the build commands and whether regeneration is safe on a mixed working tree |

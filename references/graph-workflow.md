@@ -12,6 +12,18 @@ Read this when connecting graph tools, checking dependencies or auditing a passp
 
 ## Prove readiness
 
+### Missing recommended tools
+
+Recommend both Graphify and Codebase Memory. Discover the project's configured integrations first: a working MCP integration can supply Codebase Memory even when its CLI is not on PATH. For CLI installations, use executable discovery and the installed tool's help/version command. Absence of a graph/index is different from absence of its tool; runtime permission, connection or compatibility failures require diagnosis rather than an installation request.
+
+If a recommended tool is missing, explicitly tell the user, in their language:
+
+> Please install <missing tool names> for passport and product guide dependency checks. Installation instructions: <official source links for the missing tools>. I will continue the available source review; checks requiring the missing tools remain unverified.
+
+For Russian-speaking users: «Пожалуйста, установите <Graphify / Codebase Memory / оба инструмента> для проверки связей паспорта и руководства с проектом». Include the applicable official sources: [Graphify](https://github.com/Graphify-Labs/graphify) and [Codebase Memory](https://github.com/DeusData/codebase-memory-mcp). Obtain platform-specific installation steps from those sources when needed; do not install automatically or copy another project's setup. Issue the notice once per unchanged missing-tool state in a session, not on every lookup. Record the limitation in existing task evidence. This recommendation alone does not block an otherwise authorized commit/push; preserve project-specific required gates and never claim an unavailable graph check passed.
+
+The skill's lifecycle instructions apply when an agent runs it. They do not install Git hooks or run during a person's terminal/IDE commit or push. During project onboarding, record the actual agent instruction that invokes the skill before commit/push, and identify whether Git hooks or CI wiring exists. If absent, report that manual Git actions have no automatic skill notification; do not claim universal automatic execution or install hooks silently.
+
 These are separate states: installed → callable → indexed for the correct repository → sufficiently fresh and covered → usable for the requested lookup and dependency trace.
 
 For each selected repository, obtain index status, verify the indexed root/identity and mode, then look up one real source anchor by file and symbol and query a real relationship. Inspect parse/coverage warnings and compare relevant source changes with the index. An empty result can be a wrong identity, spelling, exclusion or parser limit before it is a product finding. A version string or a successful process start is not a readiness check. Do not index all repositories for a local question merely to satisfy this checklist.
