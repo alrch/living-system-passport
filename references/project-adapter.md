@@ -55,3 +55,7 @@ Alongside these rules, record actual local commands and locations from the table
 ## Editorial and publication boundary
 
 The adapter must preserve the distinction between current functional description, change journal and execution evidence. Do not add mandatory dated passport entries or republishing to every code fix/release. Review the affected entry and record a no-change conclusion in the task record when the documented contract remains correct. Put hosting/version-binding mechanics in operational metadata; publishing remains a separately authorized workflow.
+
+## Product guide binding
+
+Record the canonical product-guide path, its chapter links to passport function IDs, the old product-view replacement/redirect, actual commit/push review rules and deployed-environment/version bindings. Follow [product-guide.md](product-guide.md) for content and joint review. Update active navigation, reading-view source allowlists and manifests to the guide; do not create a third current product summary. State whether each lifecycle check is agent-run or actually enforced by hooks/CI.

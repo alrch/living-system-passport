@@ -1,6 +1,6 @@
 ---
 name: living-system-passport
-description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a whole project, audit an existing function, plan a new function, or assess a behavior change; connect findings to project quality checks without making the passport a tool configuration.
+description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a whole project, audit an existing function, plan a new function, or assess a behavior change; connect findings to project quality checks without making the passport a tool configuration. Create and maintain its linked product guide for PMs, including function interactions and joint lifecycle review.
 ---
 
 # Living System Passport
@@ -21,6 +21,10 @@ The passport describes the system's current functions, behavior, rules, boundari
 - Put a finding under the affected function, with its current status, consequence and source link. Put genuinely cross-cutting findings in a general findings section at the end. A separate canonical register may retain the details; do not copy its issue history into each entry.
 - A function may link to its requirement, scenario and verification evidence and briefly state a material uncertainty. Keep run-by-run results, timestamps, build hashes and deployment receipts outside the narrative; optional version metadata belongs in a separate manifest or compact metadata view.
 - Reviewing passport freshness, changing its prose and publishing its reading view are separate actions. Do not require a new entry or publication after every fix or deployment. Publish only within an already authorized documentation workflow or an explicit publication request; do not make optional publication a blocker for the user's implementation task.
+
+## Maintain a technical passport and product guide
+
+Maintain the product guide alongside the technical passport; it replaces the former product passport/editorial summary. Read [product-guide.md](references/product-guide.md) when creating either document, replacing the product view, or reviewing affected behavior. Use the five-part guide, one continuous example, explicit function dependencies and a worked proposed addition. Review affected guide chapters whenever the passport is reviewed, including existing commit/push and environment-specific release boundaries. Record a justified no-change result when appropriate. Keep actual automation, review evidence and publication authorization distinct; a skill instruction is not an installed hook or proof of deployed behavior.
 
 ## Establish the boundary
 
