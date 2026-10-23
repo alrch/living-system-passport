@@ -26,6 +26,18 @@ The passport describes the system's current functions, behavior, rules, boundari
 
 Maintain the product guide alongside the technical passport; it replaces the former product passport/editorial summary. Read [product-guide.md](references/product-guide.md) when creating either document, replacing the product view, or reviewing affected behavior. Use the five-part guide, one continuous example, explicit function dependencies and a worked proposed addition. Review affected guide chapters whenever the passport is reviewed, including existing commit/push and environment-specific release boundaries. Record a justified no-change result when appropriate. Keep actual automation, review evidence and publication authorization distinct; a skill instruction is not an installed hook or proof of deployed behavior.
 
+## Finish with an autonomous usefulness review
+
+When creating, substantially expanding, or auditing the pair, read [usefulness-review.md](references/usefulness-review.md). Before handing it back, test the written documents against realistic work and change questions, criticize the answers, and repair the actionable gaps in the same task. Repeat the affected review after repairs. An inventory, populated template, passing link check, or list of future investigations is not the requested working description.
+
+Choose function boundaries by observable actions and outcomes. A heading such as “employees, assignments and issuance” may navigate a domain, but cannot stand in for descriptions of creating an employee, changing an assignment, issuing, canceling and returning when those actions have different rules or consequences. Keep existing IDs/anchors usable and add subordinate or new IDs only where needed.
+
+Promote established behavior from reports, tests and decisions into the current function explanation; retain the evidence link and its exact scope. “No code change” and “not accepted by the customer” do not justify leaving a thin description unchanged. A parity test may establish an observed transition without approving its business correctness. Keep the rule, observed behavior and acceptance status distinct.
+
+Do not use “requires verification” as a substitute for available investigation. Resolve source-answerable questions within the authorized scope; for a remaining unknown, state the exact boundary, what was inspected, its user/change consequence and the next evidence needed. Never fabricate certainty, run unauthorized effects, or turn document completion into an obligation to fix product bugs.
+
+Apply this as an agent-run review whenever this workflow is invoked. It is not a background process, installed hook, or guarantee that arbitrary future agents will obey it. A narrow maintenance task reviews only the affected functions and direct neighbors; it does not reopen unrelated domains.
+
 ## Establish the boundary
 
 - Find the project's current instructions, product documents, requirement/status source, architecture index, API contracts, schema definitions, and scenario tests. Identify which source owns each fact. Do not infer approval, release, or production behavior from code presence.
