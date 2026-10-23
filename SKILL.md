@@ -1,6 +1,6 @@
 ---
 name: living-system-passport
-description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a project, audit a function, plan a feature, assess a behavior change, and before agent-run commits or pushes in projects maintaining a passport and product guide. Maintain the linked PM guide and check graph tool availability, requesting installation of missing recommended tools.
+description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a project, audit a function, plan a feature, assess a behavior change, and before agent-run commits or pushes in projects maintaining a passport and product guide. Create and maintain the linked PM guide and project overview, and check graph tool availability, requesting installation of missing recommended tools.
 ---
 
 # Living System Passport
@@ -25,6 +25,16 @@ The passport describes the system's current functions, behavior, rules, boundari
 ## Maintain a technical passport and product guide
 
 Maintain the product guide alongside the technical passport; it replaces the former product passport/editorial summary. Read [product-guide.md](references/product-guide.md) when creating either document, replacing the product view, or reviewing affected behavior. Use the five-part guide, one continuous example, explicit function dependencies and a worked proposed addition. Review affected guide chapters whenever the passport is reviewed, including existing commit/push and environment-specific release boundaries. Record a justified no-change result when appropriate. Keep actual automation, review evidence and publication authorization distinct; a skill instruction is not an installed hook or proof of deployed behavior.
+
+## Create and maintain a project overview
+
+When creating a project's passport and product guide, create a separate readable **Project Overview** in the same task. Use `PROJECT_OVERVIEW.md` by default, or preserve an existing canonical overview/help location supplied by the project. When an overview is explicitly requested for an existing project, create it if missing. Read [project-overview.md](references/project-overview.md) and use the [starter](assets/project-overview.template.md) as a completeness aid, replacing placeholders with verified facts before treating the document as complete.
+
+Start with a brief plain-language account of the actual target product: what it is, for whom, the result it provides, participants and their roles, and one end-to-end example of how it works. Do not substitute a description of this skill, starter page or documentation process. Then explain its actual technology stack and high-level architecture, followed by environment/access/bug-report/working-link information where applicable. Summarize component responsibilities and interactions; link detailed behavior to the guide and technical passport rather than copying them. Verify stack claims against manifests/lockfiles and architecture against actual entry points, services, storage and integrations. Separate shared facts from environment-specific or deployed facts; name gaps instead of guessing technologies, versions, roles or URLs.
+
+Maintain an existing or requested overview in the same skill pass even if `AGENTS.md` does not repeat this duty. Review affected sections when purpose, stack, component boundaries/interactions, environments, access, bug reporting or working links change. Update the overview and matching start-page destinations in the same task, or record a scoped no-change result when the overview remains correct. Before agent-run commit/push, cover relevant changes since its last review; after merge, inspect affected combined behavior. A narrow maintenance task does not require a whole-project rewrite.
+
+Bind the start-page **Project help** action to the overview's readable view for the selected environment. Include its source in the existing renderer/publication allowlist and verify the resulting route or local output; an absent file, inactive placeholder or Markdown filename in configuration is not a working navigation result. Use the project's existing publication authorization; do not deploy merely to claim the link is ready. The adapter supplies actual paths, source ownership, views and commands. This skill does not install a watcher, Git hook or semantic CI check.
 
 ## Finish with an autonomous usefulness review
 

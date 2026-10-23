@@ -11,6 +11,8 @@ The shared skill defines decisions and evidence standards. The owning project su
 | Where are selection and lifecycle rules? | Identity keys across sources, visibility and retention policy, cleanup mechanism, if the project has filterable records or exports |
 | What is the repository boundary? | Code repositories and revision identifiers needed to describe one current behavior |
 | What triggers review? | Product changes, requirement/status changes, source pulls, screen or API moves, new files, accepted decisions |
+| Where is the project overview? | Canonical PROJECT_OVERVIEW.md or existing equivalent; readable-view route/output by environment, renderer allowlist, and sources for description, stack, architecture, access, bug reports and working links |
+| What triggers overview review? | Changes to purpose, stack, architecture and operational facts; relevant unreviewed changes before agent-run commit/push and after merge; scoped no-change is allowed |
 | What invokes lifecycle checks? | Agent instructions invoking this skill before agent-run commit/push; actual installed hooks/CI, if any, for manual Git actions. Record missing automation explicitly. |
 | Which graph serves which purpose? | Code dependencies versus outcome/rule/scenario citations; engines, actual index identities, build/status/query commands, exclusions and readiness evidence |
 | How are affected entries found? | Existing index, graph, changed-file or requirement-ID lookup, or targeted search |
@@ -60,3 +62,12 @@ The adapter must preserve the distinction between current functional description
 ## Product guide binding
 
 Record the canonical product-guide path, its chapter links to passport function IDs, the old product-view replacement/redirect, actual commit/push review rules and deployed-environment/version bindings. Follow [product-guide.md](product-guide.md) for content and joint review. Update active navigation, reading-view source allowlists and manifests to the guide; do not create a third current product summary. State whether each lifecycle check is agent-run or actually enforced by hooks/CI.
+
+
+## Project overview binding
+
+The shared skill creates and maintains the overview; the adapter supplies its canonical location and authoritative sources. Prefer `PROJECT_OVERVIEW.md` for a new document while preserving an existing equivalent. Lead with the actual product purpose, audience, participants/roles and main workflow; keep the actual stack and architecture concise and source-backed, with environment/access/bug-report/tool information as applicable; link deeper functional explanations to the guide/passport.
+
+Map the start-page Project help action to a readable view of this document. Record the Markdown input, output/route, renderer allowlist, actual build/link checks and existing publication workflow. Verify the view exists and the selected environment resolves to the intended document; explicitly shared overviews are allowed. Do not leave the action as an inactive placeholder or treat a raw Markdown filename as an HTML view.
+
+Record where the last review is evidenced. Review affected meaning and links in the same task; a timestamp or generated HTML is not semantic acceptance. Publication stays within existing authorization, and the adapter must distinguish an agent duty from installed hook/CI automation.

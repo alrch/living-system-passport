@@ -17,6 +17,7 @@ Agents: follow the [feedback workflow](references/feedback.md) for deduplication
 - [`SKILL.md`](SKILL.md) — the reusable workflow Codex loads when the skill applies.
 - [`references/function-entry.md`](references/function-entry.md) — a checklist for a function entry, change-impact note, and finding.
 - [`references/domain-review-checks.md`](references/domain-review-checks.md) — detailed, optional checks across forms, analytics, access, workflows, integrations, files, media, and learning.
+- [`references/project-overview.md`](references/project-overview.md) and [`assets/project-overview.template.md`](assets/project-overview.template.md) — a short introduction to the actual product, its audience, participants, workflow, stack and architecture, maintained alongside the passport and guide.
 - [`references/project-adapter.md`](references/project-adapter.md) — the small set of facts each project must supply so the same skill can create and maintain its passport.
 - [`references/behavior-verification.md`](references/behavior-verification.md) — negative scenarios, alternate writers, readback and honest verification boundaries.
 - [`references/graph-workflow.md`](references/graph-workflow.md) — tool readiness, query selection, recovery and dual-tool evidence.
