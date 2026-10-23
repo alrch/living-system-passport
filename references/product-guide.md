@@ -60,6 +60,8 @@ Whenever the technical passport is reviewed, review affected guide chapters and 
 
 ## Review before handoff
 
+Apply the [autonomous usefulness review](usefulness-review.md) before handing back a newly authored, substantially expanded or audited pair. Repair failed reader questions in the same task. A populated five-part outline and a continuous character name alone do not establish usefulness; the example must explain actual actions, state consequences, correction and the proposed change.
+
 Read the result as a PM unfamiliar with implementation. Use the worked addition to test whether the guide helps identify existing capabilities, common data, affected results and unresolved choices. Replace inventories with explanations where this fails. Check internal links, function anchors, active navigation and configured reading-view inputs. If the renderer changes, build and check its output; verify UI changes in a browser when the project requires it. Report content review, build/link checks and runtime/publication verification separately.
 
 When updating installed skills, discover actual user-level and project-level paths, resolve symlinks, inspect differences and preserve unrelated local rules. Apply this contract to each installation in the requested scope; verify the new reference and entrypoint routing agree. Report the inspected paths and any installation or published upstream version not updated. Local synchronized edits are not a merged or distributed upstream release.
