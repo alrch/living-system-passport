@@ -27,80 +27,85 @@ Agents: follow the [feedback workflow](references/feedback.md) for deduplication
 
 The passport itself, project requirements, source code, generated indexes, and project-specific scripts stay in the project repository. The shared skill includes many conditional checks; a project uses only those relevant to its behavior. This repository should not contain credentials or private project evidence.
 
-### Connect it to a project
+### One shared installation for all projects
 
-From the **project root**, install the skill into Codex's repository skill location:
+Install the skill once per developer account, from this repository. Every project on that machine uses the same installed version. Codex supports a user-scoped skill directory; see [the official discovery rules](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills).
+
+For a new installation:
 
 ```bash
-mkdir -p .agents/skills
-git clone https://github.com/alrch/living-system-passport.git .agents/skills/living-system-passport
+mkdir -p ~/.agents/skills
+git clone https://github.com/alrch/living-system-passport.git ~/.agents/skills/living-system-passport
 ```
 
-If the project tracks `.agents/`, add `.agents/skills/living-system-passport/` to its `.gitignore`. The checkout is local to each developer; the project stores only the source URL and its own rules. Access to a private source repository requires the developer's GitHub credentials.
+An existing user-level installation already discovered by your Codex client can stay in its current directory. Use that actual directory in the commands below instead of creating a second installation. A shared installation must be its own checkout, not a link into another application's working tree.
 
-Add a short section like this to the project's `AGENTS.md`, replacing the bracketed items with real paths and commands:
+Projects keep their own passport, product guide, overview, sources, commands and adapter. They refer to `$living-system-passport`; they do not vendor or modify another copy of this skill. Add a short pointer to the project's existing instructions:
 
 ```markdown
-## Living system passport
-
-Skill source: https://github.com/alrch/living-system-passport.git
-Use `$living-system-passport` when mapping an existing function, planning a behavior change, or updating the passport after an accepted change.
-If the skill is missing, follow the repository README to install it under `.agents/skills/living-system-passport`.
-The project passport is [path]. Requirements/status are in [path]. Scenarios and checks are in [path or commands].
-The project's passport adapter is in [existing project instruction or documentation path]; it defines source ownership, change triggers, indexes, and review acceptance.
-Tested skill revision: [full Git commit SHA, if the project pins one].
-Keep project-specific paths and commands there; apply the shared method and only relevant domain checks from the skill.
+Use the user-installed $living-system-passport from https://github.com/alrch/living-system-passport.
+The project adapter is [actual adapter path]; it owns the project's document paths, sources and checks.
+If the skill is missing, follow its repository README to install it once for this user.
+Do not create a project copy. Record the skill revision used in review evidence, not as a separate project pin.
 ```
 
-Replace all placeholders before committing `AGENTS.md`; omit the revision line if the project does not pin a version. A URL in `AGENTS.md` tells people and agents where the source is; **the skill becomes discoverable after its directory is installed**. Codex normally detects new skills, but restarting the app may be needed if it does not appear.
+Replace the adapter placeholder before committing. The source URL alone does not install the skill. Each developer and each machine needs their own user installation; one update affects all projects on that account, not every teammate automatically. Codex may need a new chat or restart to refresh discovery.
 
-If work starts inside several independent Git repositories, a standalone user-level checkout in the skill directory supported by the installed agent can make the skill available to all of them. Clone this source repository directly there; do not symlink to a copy inside a different project. Keep the project instructions pointing to the same source. If user and project copies coexist, inspect the path actually loaded and the project's pinned revision; they are not merged. Keep intentional version pins explicit.
+### Update manually, for example once a week
 
-### Keep a team on one tested version
-
-For shared project work, record the full commit SHA tested with that project in its existing instructions. After cloning, each teammate runs `git -C .agents/skills/living-system-passport checkout <tested-commit>`. A detached checkout is expected. When adopting a newer version, review and test it, update the recorded SHA, then each teammate runs:
+A periodic review is enough; no watcher or scheduler is installed. From the actual shared installation, confirm that the branch is `main`, the origin is this repository, and the working tree is clean. Stop on a wrong source, another branch, or any staged, unstaged or untracked changes before proceeding:
 
 ```bash
-git -C .agents/skills/living-system-passport fetch origin main
-git -C .agents/skills/living-system-passport checkout <new-tested-commit>
+git -C ~/.agents/skills/living-system-passport remote get-url origin
+git -C ~/.agents/skills/living-system-passport branch --show-current
+git -C ~/.agents/skills/living-system-passport status --short
 ```
 
-Check the active revision with `git -C .agents/skills/living-system-passport rev-parse HEAD`. The project instruction is the team's version choice; the source repository's `main` may be newer.
-
-### See whether a newer version is available
-
-From the project root, fetch the shared repository and list commits added since the installed revision:
+Fetch the reviewed branch, then check whether the installation has any commits that are absent from it:
 
 ```bash
-git -C .agents/skills/living-system-passport fetch origin main
-git -C .agents/skills/living-system-passport log --oneline HEAD..origin/main
+git -C ~/.agents/skills/living-system-passport fetch origin main
+git -C ~/.agents/skills/living-system-passport log --oneline origin/main..HEAD
 ```
 
-An empty list means there is no newer commit on `main`. This check does not change the version Codex uses. Review the listed changes, run the two small comparison cases below, then update the tested commit in the project's instructions and check it out locally. Each teammate repeats the checkout; a URL in `AGENTS.md` does not watch the repository or update a skill automatically.
-
-### Update a project that follows latest
-
-From the project root:
+If that log prints anything, stop and preserve those local commits in a separate candidate checkout. A clean working tree does not mean its commits are reviewed; `merge --ff-only` alone also succeeds when the installation is locally ahead. Require `HEAD` to be an ancestor of the fetched `origin/main` before adoption; a nonzero result from this command stops the update:
 
 ```bash
-git -C .agents/skills/living-system-passport pull --ff-only
+git -C ~/.agents/skills/living-system-passport merge-base --is-ancestor HEAD origin/main
 ```
 
-Use `pull --ff-only` only when the checkout still follows `main` and the project intentionally uses the latest reviewed version. Review changes to the skill before using an updated workflow on consequential work. The `AGENTS.md` URL does not automatically pull new commits. Do not edit the local checkout for project-specific rules—put those in the project's `AGENTS.md` or passport. Send reusable corrections to this repository through a pull request.
+Only after that check succeeds, list the incoming changes:
 
-### Check a new version before replacing an old one
+```bash
+git -C ~/.agents/skills/living-system-passport log --oneline HEAD..origin/main
+```
 
-Use two small, source-backed cases from the same project revision: create one new function entry and update one existing entry after a behavior or requirement-status change. Apply the old and new versions to separate copies of those cases. Compare factual correctness, traceability, relevant checks, unresolved uncertainty, and unnecessary work. A shorter result is not automatically better; a longer checklist is not evidence that it found a real issue. Keep the old version active until the new one preserves its useful decisions and adds a clear improvement.
+Review the listed merged changes and relevant checks, then adopt them once for all projects:
 
-## For the agent setting up a project
+```bash
+git -C ~/.agents/skills/living-system-passport merge --ff-only origin/main
+```
 
-When asked to connect or update this skill:
+Stop on local edits, a non-main branch, locally ahead commits or a diverged history. Preserve the work; do not reset or force an update. Use the actual installed directory if it differs from this example. Record the previous and resulting revision in the update result, and confirm the resulting `HEAD` equals the fetched `origin/main`. A clean fast-forward of already reviewed changes is an installation update, not a new project acceptance or deployment.
 
-1. Locate the project root and read its `AGENTS.md` or existing instruction source, passport, requirement/status sources, and scenario or test documentation. Do not assume any particular file layout or tooling. Fill the facts in the [project-adapter checklist](references/project-adapter.md) from these sources.
-2. Check whether `.agents/skills/living-system-passport` already exists. If it is this repository, inspect local changes and the project's tested revision before any requested update; use the pinned-revision commands above or `git pull --ff-only` for a project following latest. If the path contains something else, stop and report the conflict rather than overwriting it.
-3. If absent, clone the source URL above into that path and check out the project's tested revision, if recorded. Ensure the nested checkout is ignored by the project Git repository; preserve unrelated `.gitignore` entries. Do not commit the downloaded checkout as project content.
-4. Add or update the project's existing instruction source with the source URL and actual project sources, checks, and adapter path. Keep the adapter and operational graph rules directly in the owning project's instructions; do not route setup through another project or private configuration workspace. Preserve existing project rules when replacing a bootstrap pointer. Keep project-specific commands, IDs, and assumptions in that project.
-5. Prove graph readiness with the [graph workflow](references/graph-workflow.md) when graphs are in scope: installed is not indexed or queryable. Validate that `SKILL.md` and its linked references are present and that `HEAD` matches the project's tested revision, if pinned. Restart Codex if skill discovery has not refreshed. In a small real project task, check that the skill uses the project's own sources and produces confirmed versus uncertain links correctly.
-6. Report the installed commit, changed project files, validation performed, and anything the project owner still needs to define. Do not claim the project's passport is complete merely because the skill is installed.
+For a substantial workflow change, compare a small new function entry and an existing-entry update at one project revision before adopting it. Check factual correctness, traceability, relevant verification, uncertainty and unnecessary work; a changed length alone is not a useful result.
+
+### Propose improvements without changing every project's active skill
+
+Keep the shared installation on reviewed `main`. Develop a candidate in a separate checkout or worktree of this repository on a `codex/` branch. A method problem found in an application belongs here; the application's configuration and product findings stay in that application.
+
+1. Search existing [Issues](https://github.com/alrch/living-system-passport/issues) and pull requests for the same problem.
+2. Reproduce it with a small sanitized case, improve the shared instructions/helper, and validate the result. An issue is optional when there is already a concrete fix.
+3. When publication is authorized, push the candidate branch and open a pull request here. Explain the observable improvement and the checks actually run.
+4. Review the candidate and decide whether to merge it. An open PR is a proposal, not an accepted update. Rejected candidates never enter the active shared installation.
+5. After merge, update the shared installation with the manual procedure above. Projects on that account then use the same approved version.
+
+If somebody edited the active installation directly, preserve staged and unstaged changes, new untracked files and any local commits in a separate candidate checkout before restoring its reviewed state. A Git diff alone omits new untracked files. Verify that the candidate contains the complete improvement before changing the active installation; do not discard it or distribute it silently. See [feedback.md](references/feedback.md) for the contribution and authorization boundaries.
+
+### Migrate existing project copies
+
+Prepare a reviewable migration and obtain the owner's acceptance before switching consuming projects, unless existing authorization already covers that switch. Preparing or opening a PR is not acceptance. Before removing a copy, compare it with the shared version and inspect its callers. Move actual project parameters into the existing project adapter. Preserve uncommitted changes in a verified backup; do not replace a whole instruction file or lose previous work. Historical local notes are evidence, not another current version of the skill.
+
+Move operational runtime dependencies, such as a documentation renderer used by CI, into the owning project's scripts and update their callers/checks. A clean CI checkout must not depend on an operator's user skill directory. Then remove project skill copies and discovery symlinks, update current instruction/document links, and check that only the user installation supplies this skill. Existing dated audit evidence stays historical.
 
 The skill does not authorize changing product behavior, requirement status, releases, or external systems. Follow the project's normal authorization and review process for those actions.
