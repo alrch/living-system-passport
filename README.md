@@ -53,13 +53,30 @@ Replace the adapter placeholder before committing. The source URL alone does not
 
 ### Update manually, for example once a week
 
-A periodic review is enough; no watcher or scheduler is installed. From the shared installation, confirm that the branch is `main`, the origin is this repository, and the working tree is clean:
+A periodic review is enough; no watcher or scheduler is installed. From the actual shared installation, confirm that the branch is `main`, the origin is this repository, and the working tree is clean. Stop on a wrong source, another branch, or any staged, unstaged or untracked changes before proceeding:
 
 ```bash
 git -C ~/.agents/skills/living-system-passport remote get-url origin
 git -C ~/.agents/skills/living-system-passport branch --show-current
 git -C ~/.agents/skills/living-system-passport status --short
+```
+
+Fetch the reviewed branch, then check whether the installation has any commits that are absent from it:
+
+```bash
 git -C ~/.agents/skills/living-system-passport fetch origin main
+git -C ~/.agents/skills/living-system-passport log --oneline origin/main..HEAD
+```
+
+If that log prints anything, stop and preserve those local commits in a separate candidate checkout. A clean working tree does not mean its commits are reviewed; `merge --ff-only` alone also succeeds when the installation is locally ahead. Require `HEAD` to be an ancestor of the fetched `origin/main` before adoption; a nonzero result from this command stops the update:
+
+```bash
+git -C ~/.agents/skills/living-system-passport merge-base --is-ancestor HEAD origin/main
+```
+
+Only after that check succeeds, list the incoming changes:
+
+```bash
 git -C ~/.agents/skills/living-system-passport log --oneline HEAD..origin/main
 ```
 
@@ -69,7 +86,7 @@ Review the listed merged changes and relevant checks, then adopt them once for a
 git -C ~/.agents/skills/living-system-passport merge --ff-only origin/main
 ```
 
-Stop on local edits, a non-main branch or a diverged history. Preserve the work; do not reset or force an update. Use the actual installed directory if it differs from this example. Record the previous and resulting revision in the update result. A clean fast-forward of already reviewed changes is an installation update, not a new project acceptance or deployment.
+Stop on local edits, a non-main branch, locally ahead commits or a diverged history. Preserve the work; do not reset or force an update. Use the actual installed directory if it differs from this example. Record the previous and resulting revision in the update result, and confirm the resulting `HEAD` equals the fetched `origin/main`. A clean fast-forward of already reviewed changes is an installation update, not a new project acceptance or deployment.
 
 For a substantial workflow change, compare a small new function entry and an existing-entry update at one project revision before adopting it. Check factual correctness, traceability, relevant verification, uncertainty and unnecessary work; a changed length alone is not a useful result.
 
@@ -83,11 +100,11 @@ Keep the shared installation on reviewed `main`. Develop a candidate in a separa
 4. Review the candidate and decide whether to merge it. An open PR is a proposal, not an accepted update. Rejected candidates never enter the active shared installation.
 5. After merge, update the shared installation with the manual procedure above. Projects on that account then use the same approved version.
 
-If somebody edited the active installation directly, preserve that diff in a separate candidate checkout before restoring its reviewed state; do not discard it or distribute it silently. See [feedback.md](references/feedback.md) for the contribution and authorization boundaries.
+If somebody edited the active installation directly, preserve staged and unstaged changes, new untracked files and any local commits in a separate candidate checkout before restoring its reviewed state. A Git diff alone omits new untracked files. Verify that the candidate contains the complete improvement before changing the active installation; do not discard it or distribute it silently. See [feedback.md](references/feedback.md) for the contribution and authorization boundaries.
 
 ### Migrate existing project copies
 
-Before removing a copy, compare it with the shared version and inspect its callers. Move actual project parameters into the existing project adapter. Preserve uncommitted changes in a verified backup; do not replace a whole instruction file or lose previous work. Historical local notes are evidence, not another current version of the skill.
+Prepare a reviewable migration and obtain the owner's acceptance before switching consuming projects, unless existing authorization already covers that switch. Preparing or opening a PR is not acceptance. Before removing a copy, compare it with the shared version and inspect its callers. Move actual project parameters into the existing project adapter. Preserve uncommitted changes in a verified backup; do not replace a whole instruction file or lose previous work. Historical local notes are evidence, not another current version of the skill.
 
 Move operational runtime dependencies, such as a documentation renderer used by CI, into the owning project's scripts and update their callers/checks. A clean CI checkout must not depend on an operator's user skill directory. Then remove project skill copies and discovery symlinks, update current instruction/document links, and check that only the user installation supplies this skill. Existing dated audit evidence stays historical.
 
