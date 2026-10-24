@@ -9,6 +9,8 @@ A passport helps people and agents understand what a system does and what a prop
 
 The workflow is portable. Discover the project's own sources of truth, repositories, status language, scenario format, indexes, and checks before applying it. The detailed domain checks are optional: select only those matching the behavior under review. No particular architecture, infrastructure, registry, or business domain is required. Verify the actual skill path and revision when user and project installations share this name; do not inherit another project's adapter through a symlink or profile.
 
+Use one user-installed checkout for projects sharing this workflow; keep it on reviewed `main`. Project instructions and adapters own local parameters, not a modified copy of this skill. Record the actual loaded revision in review evidence. Develop improvements in a separate candidate checkout and submit them through the [feedback workflow](references/feedback.md); they become active only after review, merge and an explicit installation update. See the [installation and migration procedure](README.md#one-shared-installation-for-all-projects).
+
 Read the project's instructions for its [passport adapter](references/project-adapter.md): where the passport and source evidence live, which changes trigger review, how linked entries are found, and which project commands validate or refresh them. If no adapter exists yet, establish the minimum facts needed for the requested task instead of inventing commands or copying another project's configuration. Project instructions can make this skill mandatory for particular changes without duplicating its full method.
 
 ## Keep the passport separate from the change journal
