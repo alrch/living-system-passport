@@ -1,4 +1,4 @@
 interface:
   display_name: "Living System Passport"
-  short_description: "Maintain a readable system map and change impact"
-  default_prompt: "Use $living-system-passport to map the requested project or function, verify graph evidence, and keep product and method findings separate."
+  short_description: "Connect behavior, change impact and verified quality checks"
+  default_prompt: "Use $living-system-passport to map the requested behavior and change impact, verify it with scenarios, and use or establish project quality controls within scope."

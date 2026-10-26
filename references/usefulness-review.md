@@ -14,6 +14,8 @@ For each domain read its current reports, relevant accepted decisions, implement
 
 Distinguish three different facts: what the implementation does, what execution has demonstrated, and what the owner has accepted. Reuse historical execution evidence only with its source/revision/scope; do not present it as a new run or as current runtime proof. Compare changed sources before carrying its claim forward.
 
+For a consequential calculation or transition, explain actual branch/default selection and its result rather than naming a calculator or fallback. For retry/correction, recover the exact request identity, compared/preserved values and rejected versus reused outcome. If linked records are grouped or matched, state the identity and cardinality that determine the result. Scope this precision to rules a reader needs to reason about; do not transcribe every implementation line.
+
 ## Read the result without filling gaps from memory
 
 Select realistic tasks across the consequential branches in scope. Include correction or reversal and one proposed change. Answer using only the authored pair, following its links when needed. For each answer cite the actual passage; if the answer relies on knowledge from investigation that is absent from the text, the document fails that question.
@@ -36,6 +38,14 @@ projection; neither invent a per-person link from an aggregate nor call an
 existing partial link wholly unknown.
 
 For the guide, check that the same teaching example carries actual outputs into later steps and works backward through a correction before continuing. Include branches such as insufficient stock, incomplete configuration, another responsible role, and an already completed result where they materially change work. Technical identifiers may be linked, but must not replace the user's explanation.
+
+## Check the working loop as well as the text
+
+For a substantial rewrite intended to support later implementation, retain the original explanation and a source-bound intermediate document revision before the main fixes. Use the improved passport to select a real extension point, trace consequences and choose checks; after the change, reconcile the explanation and rerun affected reader questions. Record what was learned from the passport versus rediscovered in source. Do not impose a whole-project rewrite or intermediate commit on routine maintenance; a fingerprint or existing evidence record can preserve the boundary without granting Git authorization.
+
+During broad acceptance, add a fresh question about a consequential exception or proposed change that was not used to draft the answer. Answer from the final documents and links first, then verify against source. Capture the actual answer location, gap and correction. Another agent is useful when authorized, but is not necessary for every review. An analyzer inventory, green gate or working graph cannot fill a missing explanation from the reviewer's memory.
+
+When a quality-tool rollout is in scope, verify its separate [control proofs and enforcement boundary](quality-controls.md#accept-both-explanations-and-controls). Documentation can explain a rule even when a static tool cannot cover it; a static result does not establish that the rule was exercised. Keep semantic, behavioral, structural and enforcement conclusions distinct.
 
 ## Criticize and repair before handoff
 
