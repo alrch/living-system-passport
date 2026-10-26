@@ -1,6 +1,6 @@
 ---
 name: living-system-passport
-description: Build or maintain a living system passport that connects product behavior to screens, APIs, data, requirements, and tests. Use to map a project, audit a function, plan a feature, assess a behavior change, and before agent-run commits or pushes in projects maintaining a passport and product guide. Create and maintain the linked PM guide and project overview, and check graph tool availability, requesting installation of missing recommended tools.
+description: Build and maintain a system passport, product guide and project overview linking behavior to implementation and verification. Use for project mapping, function audits, change-impact analysis and agent-run commit/push review in passport projects. When onboarding or improving project quality controls, connect and validate persistent navigation, architecture, duplication, unused-code and registry checks.
 ---
 
 # Living System Passport
@@ -12,6 +12,12 @@ The workflow is portable. Discover the project's own sources of truth, repositor
 Use one user-installed checkout for projects sharing this workflow; keep it on reviewed `main`. Project instructions and adapters own local parameters, not a modified copy of this skill. Record the actual loaded revision in review evidence. Develop improvements in a separate candidate checkout and submit them through the [feedback workflow](references/feedback.md); they become active only after review, merge and an explicit installation update. See the [installation and migration procedure](README.md#one-shared-installation-for-all-projects).
 
 Read the project's instructions for its [passport adapter](references/project-adapter.md): where the passport and source evidence live, which changes trigger review, how linked entries are found, and which project commands validate or refresh them. If no adapter exists yet, establish the minimum facts needed for the requested task instead of inventing commands or copying another project's configuration. Project instructions can make this skill mandatory for particular changes without duplicating its full method.
+
+## Combine meaning, behavior and persistent checks
+
+Use one workflow with three distinct forms of evidence: the passport explains rules and change impact; scenarios exercise behavior; project-owned tools check structural constraints on later changes. None substitutes for the others. A polished description does not prove a scenario, and an analyzer's green result does not prove a readable or correct rule.
+
+For project onboarding, an explicitly requested quality setup or a broad technical audit, read [persistent quality controls](references/quality-controls.md). Assess the project's applicable capabilities, reuse working tools and close authorized setup gaps. Keep the tool profile, versions, commands, baselines and enforcement in the owning project. Installing this shared skill alone installs no analyzers, CI jobs, hooks or background services. A narrow change consumes the established profile; it does not trigger a new tool rollout or whole-project scan.
 
 ## Keep the passport separate from the change journal
 
@@ -120,10 +126,10 @@ Use [the function-entry template](references/function-entry.md) when creating a 
 For a new function or change in logic:
 
 1. State the proposed behavior and the meaning-level rule it changes or must preserve. Identify the affected actors and states.
-2. Search for the same user outcome in existing functions and implementations. Name the best extension point; propose a new module only when its responsibility differs, and explain why the existing one does not fit.
+2. Search for the same user outcome in existing functions and implementations. Use the existing capability index, graph and structural search where useful; confirm the source. Name the best extension point; propose a new common module only when its responsibility differs, and explain why the existing implementation does not fit. Reuse existing passport IDs rather than starting a competing registry.
 3. Trace the smallest relevant chain in both directions: user action or external event → actual entry point → implementation → state/integration, using only layers the project has; then find direct consumers, shared contracts, nearby functions, and scenario tests. Use existing indexes first, followed by targeted source checks.
 4. Return an impact list with **confirmed changes**, **places to inspect**, and **missing/uncertain links**. Give evidence for each. Do not turn a possible dependency into a proven breakage.
-5. Choose scenario checks for the changed rule and its direct dependencies: normal path, access boundary, failure or retry, and relevant edge state. Reuse existing scenarios before adding new ones. Run only the checks warranted by the actual change and project gates.
+5. Choose scenario checks for the changed rule and its direct dependencies: normal path, access boundary, failure or retry, and relevant edge state. Reuse existing scenarios before adding new ones. Run relevant checks from the project's quality profile as well as behavioral scenarios; retain required project gates. Changes to an analyzer, wrapper, scope or baseline policy require renewed affected negative controls, as described in [quality controls](references/quality-controls.md#prove-the-check-through-its-real-entry-point). A text-only edit needs content/link checks, not an unrelated analyzer rollout.
 6. Review the affected passport entry in the same task. Update its current description only if the accepted behavior or its links changed; a restored documented contract may need no prose change. If the answer is not yet decided, record the open question and owner of the decision rather than inventing a rule. Record why a reviewed neighboring entry needs no edit when that matters for traceability.
 
 For a request to plan rather than implement, produce the impact list and proposed passport changes without claiming that code, tests, requirements, or acceptance statuses were updated.
@@ -132,14 +138,15 @@ When maintaining an existing passport, start with the task's exact changed files
 
 ## Connect the passport to quality checks
 
-Use two distinct modes:
+Use three distinct modes; their detailed setup and enforcement contract is in [persistent quality controls](references/quality-controls.md):
 
+- **Establish or repair controls:** during authorized onboarding/quality work, assess applicable capabilities, reuse native tool features, configure one control at a time and prove the real project command rejects a new violation. Record local and CI readiness separately. A detected setup gap is not permission to alter shared infrastructure or silently expand a narrow task.
 - **Audit what already exists:** when the owner requests a review, inspect the selected function or domain; cover the whole project only when that scope was requested. Start with current reports and project checks, run missing or stale checks justified by the scope, and connect confirmed behavior gaps, duplicated implementations, and unused-code candidates to the affected passport functions. A static finding is a lead, not proof that behavior is wrong or code may be deleted. Record scope, evidence, unresolved findings, and what was actually checked.
-- **Check a change:** trace only the affected function and its direct consumers using the passport, then run the relevant local quality commands and scenario tests for an implemented change. Compare results with the accepted baseline; investigate new findings before updating the passport. For a plan without code changes, identify the checks to run later without claiming that they passed. Do not repeat a whole-project audit for an ordinary change.
+- **Check a change:** trace only the affected function and its direct consumers using the passport, then run the relevant established quality commands and scenario tests. Compare specific findings with the accepted baseline; connect confirmed findings to function IDs, correct authorized defects and reconcile the explanation. For a plan, identify checks without claiming they passed. Do not repeat a whole-project audit for an ordinary change.
 
 For a destructive workflow or external handoff, prove the local state transition with disposable, isolated data and a bounded test endpoint before claiming it works. Make integration tests refuse production targets and clean up only resources they created. Distinguish a local protocol stand-in from a receipt issued by the real provider; record the remaining external check without turning it into an owner decision.
 
-When introducing missing quality checks, take one check at a time: scan the agreed scope, inspect and classify existing findings, configure it, demonstrate that a new violation fails, then proceed to the next check. Keep executable commands, analyzer configuration, and baselines in the project that owns the code; link to them from project documentation. Do not copy project-specific configuration into this portable skill or treat an updated baseline as a fix.
+When introducing missing quality checks, classify existing findings before baselining. Verify analyzed inputs, output integrity and the final wrapper exit, not just tool startup. In CI a baseline supplied by the evaluated change cannot authorize that same change's new debt; identify the trusted source and the remaining runner/review boundary. Keep executable configuration in the project; do not copy it into this shared skill. Follow the [control proof and baseline rules](references/quality-controls.md).
 
 When committed changes and an active working tree differ, evaluate a newly introduced baseline against a clean copy of that commit before attributing new analyzer findings to it. Report that result separately from checks on the working tree; a clean committed baseline does not clear new local findings.
 

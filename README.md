@@ -21,11 +21,14 @@ Agents: follow the [feedback workflow](references/feedback.md) for deduplication
 - [`references/project-adapter.md`](references/project-adapter.md) — the small set of facts each project must supply so the same skill can create and maintain its passport.
 - [`references/behavior-verification.md`](references/behavior-verification.md) — negative scenarios, alternate writers, readback and honest verification boundaries.
 - [`references/graph-workflow.md`](references/graph-workflow.md) — tool readiness, query selection, recovery and dual-tool evidence.
+- [`references/quality-controls.md`](references/quality-controls.md) — project-owned persistent checks, real violation proofs, baseline/CI trust and daily use alongside behavioral documentation.
 - [`references/maintenance-checks.md`](references/maintenance-checks.md) — conditional checks for existing registries and review baselines.
 - [`scripts/evidence_snapshot.py`](scripts/evidence_snapshot.py) — optional file/revision snapshot for a reproducible final audit.
 - [`agents/openai.yaml`](agents/openai.yaml) — optional Codex display metadata.
 
 The passport itself, project requirements, source code, generated indexes, and project-specific scripts stay in the project repository. The shared skill includes many conditional checks; a project uses only those relevant to its behavior. This repository should not contain credentials or private project evidence.
+
+The workflow combines readable rules and change impact, behavioral scenarios, and persistent structural checks. Installing the skill supplies instructions; it does not install analyzers or change project CI. During authorized onboarding/quality work, select compatible tools, retain their reproducible configuration in the project and prove that the real commands reject new violations. Ordinary work then uses those established controls. A green static gate does not replace the explanation or behavioral evidence.
 
 ### One shared installation for all projects
 

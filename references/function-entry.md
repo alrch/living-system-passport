@@ -11,6 +11,7 @@ Describe current behavior. Keep findings under this function; use an end-of-pass
 | Stable function ID and name | Existing ID if available; otherwise a passport ID |
 | Scope and state | What behavior is included; observed, planned, accepted, or externally gated, with status source |
 | Meaning for people | Why this exists, who acts, what they receive, and the rule a future solution must preserve |
+| Rule mechanics | For consequential calculations/transitions: actual inputs, units/time boundaries, branch conditions, defaults/fallback selection and observable result; a calculator name does not explain its rule |
 | Exceptions and boundaries | Negative cases, failures, manual/external duties, decisions still open |
 | Screens | Routes, roles, fields, table columns, controls, visible states |
 | API and services | Method/path, request/response/errors, authorization, implementation source |
@@ -20,6 +21,7 @@ Describe current behavior. Keep findings under this function; use an end-of-pass
 | Alternate write paths | Other entry points writing the same consequential field/state; compare policy, validation, dependent-state updates and intentional exceptions |
 | Behavioral evidence | Links to the canonical scenario/evidence records and a concise material verification limit; keep individual run results, readback logs and mock/environment details in those records |
 | Transition path | Actor, precondition, ordered state writes and side effects, failure point, retry/idempotency, observable result |
+| Retry equivalence, when relevant | Exact identity and compared fields, normalization, preserved/ignored values, authorization rechecks and conflicting-repeat outcome; distinguish wrapper policy from the shared service |
 | Connections | Upstream triggers, downstream consumers, neighboring functions, shared contracts |
 | Traceability | Requirement/ticket IDs, scenario IDs and links to evidence; keep acceptance separate from scenario metadata and store execution dates/results/revisions in the evidence record |
 | Findings | Linked contradiction, repeated behavior, duplicate implementation/data, dead code candidate, or missing connection; status and evidence |

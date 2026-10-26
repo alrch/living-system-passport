@@ -18,6 +18,9 @@ The shared skill defines decisions and evidence standards. The owning project su
 | How are affected entries found? | Existing index, graph, changed-file or requirement-ID lookup, or targeted search |
 | Which steps are generated? | Inventories and indexes; the build commands and whether regeneration is safe on a mixed working tree |
 | How is behavior exercised safely? | Existing test/probe commands, disposable data or supported isolated target, callable boundaries and readback paths; identify external effects that remain unverified |
+| Which persistent quality controls apply? | Existing tools/versions, analyzed roots and entry points, exclusions, required/advisory policy, actual installation/check commands and owning function or architectural boundary; see [quality controls](quality-controls.md) |
+| What proves the controls work? | Real allowed/violating specimens through the final command, analyzed-input checks, native/wrapper exit semantics and revision-bound evidence; when tool/config changes invalidate it |
+| Where does baseline trust come from? | Finding identity/multiplicity, reviewed debt/policy changes, immutable CI input selected outside the evaluated change, protection of checker/config/required jobs and any uninstalled enforcement |
 | How is review accepted? | Structural and behavioral/scenario evidence, writer-path comparison and explicit execution limits; source fingerprint or revision baseline procedure, if one exists |
 | How is the skill installed? | Actual source repository, installed path and revision; no dependency on another project checkout or private profile |
 | Where does reusable feedback go? | Shared skill Issues/PRs; local method finding links back to its submitted URL; submission authorization and actual access remain explicit |
@@ -35,6 +38,14 @@ Record only commands that exist and the conditions under which they should run. 
 6. Report unrelated drift separately. Do not silently absorb it into the task or imply that the whole passport was reviewed.
 
 This contract applies to creation and editing. On first creation, the baseline records where review starts; it does not prove semantic completeness. On later edits, preserve the previous reviewed boundary until each affected item is checked.
+
+## Persistent quality and daily invocation
+
+For authorized setup or a broad technical audit, use [quality-controls.md](quality-controls.md) to assess applicable navigation, AST search, architecture/cycles, clone, unused-code and registry capabilities. Reuse this adapter and existing passport IDs rather than creating another capability catalog. Keep actual analyzer configuration, pinned dependencies, baselines and commands in the owning project; this portable skill contains no executable project gate.
+
+Record which commands run for source changes, documentation changes, analyzer/policy changes and existing commit/push/CI boundaries. Specify a working directory and install prerequisites; no example command becomes real by appearing in instructions. Confirm the final command fails on a real new violation and cannot conceal an analyzer failure or empty scan. Required checks that cannot run are unverified, not successful. A missing new capability is a scoped setup finding; ordinary edits do not authorize a new tool rollout.
+
+State separately whether local commands, hooks, remote CI and required branch/runner checks are actually installed and exercised. Existing broad project gates keep their force; focused scenario selection does not waive them. Reprove affected controls after analyzer, import-root, wrapper or baseline-policy changes. Installing/updating the shared skill alone does not configure or change consuming projects.
 
 
 ## Graph integration and direct project rules
