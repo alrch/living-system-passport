@@ -1,6 +1,6 @@
 # Project Overview
 
-Create this separate document alongside a new passport/guide pair, or when the user requests it for an existing project. Default to `PROJECT_OVERVIEW.md`; reuse an existing canonical equivalent. Use the bundled starter to avoid missing a section, not as a rigid page layout. For focused maintenance, review only sections affected by the task.
+Create this separate document alongside a new passport/guide pair, or when the user requests it or the full document set for an existing project. Default to `PROJECT_OVERVIEW.md`; reuse an existing canonical equivalent. Use the bundled starter to avoid missing a section, not as a rigid page layout. For focused maintenance, review only sections affected by the task.
 
 ## Minimum useful content
 
@@ -19,4 +19,4 @@ Review when purpose, audience, participant roles, the main workflow, stack, serv
 
 ## Start-page link
 
-Bind the existing Project help button to the overview's readable HTML/document view. Add its Markdown source to the project's renderer allowlist, build it, and verify the destination and selected environment. If one overview covers several environments, assign that shared resource explicitly. Treat source creation, local rendering, publication and live navigation as separate verified boundaries; do not claim a deployed view from a local build.
+Where an existing Project help button and supported reading view apply, bind the button to the overview within the authorized scope. Use the existing renderer and allowlist if needed, build it, and verify the destination and selected environment. If one overview covers several environments, assign that shared resource explicitly. A project without a start page or renderer may use the source document directly; do not introduce a UI or publication system solely for this link. Treat source creation, local rendering, publication and live navigation as separate verified boundaries; do not claim a deployed view from a local build.
